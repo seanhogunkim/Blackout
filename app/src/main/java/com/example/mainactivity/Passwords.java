@@ -1,7 +1,7 @@
 package com.example.mainactivity;
 
 public class Passwords {
-    String[] passwords = new String[7];
+    final String[] passwords = new String[7];
 
     public Passwords() {
         passwords[0] = "She had a habit of taking showers in lemonade.";

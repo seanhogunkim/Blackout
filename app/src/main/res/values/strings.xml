@@ -1,7 +1,5 @@
 <resources>
     <string name="app_name">Sean is not an alcoholic</string>
-    <string name="enter_name">Enter Name:</string>
-    <string name="enter_password">Enter Password:</string>
     <string name="login">LOGIN</string>
     <string name="add_drinks">ADD DRINKS</string>
     <string name="numAttempts">Number of attempts: %1d"</string>

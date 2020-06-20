@@ -20,9 +20,6 @@ public class MainActivity extends AppCompatActivity {
     private TextView randomPassword;
     private EditText editPassword;
     private TextView numFailedAttempts;
-    private Button login;
-    private Button addDrink;
-    private Passwords passwordsList;
     private String _password;
     private int counter = 0;
 
@@ -31,17 +28,16 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        /**
-         * Setting buttons and text boxes on the screen
-         */
+
+        //Setting buttons and text boxes on the screen
         randomPassword = findViewById(R.id.tvRandomPassword);
         editPassword = findViewById(R.id.etPassword);
         numFailedAttempts = findViewById(R.id.tvFailedAttempts);
-        login = findViewById(R.id.buttonLogin);
-        addDrink = findViewById(R.id.buttonDrinksAdder);
+        Button login = findViewById(R.id.buttonLogin);
+        Button addDrink = findViewById(R.id.buttonDrinksAdder);
 
         //Generation random password for the checker and setting it
-        passwordsList = new Passwords();
+        Passwords passwordsList = new Passwords();
         randomPassword.setText(passwordsList.randomPassword());
         numFailedAttempts.setText(getString(R.string.numAttempts, counter));
 
