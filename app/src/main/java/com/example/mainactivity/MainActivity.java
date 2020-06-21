@@ -1,91 +1,49 @@
 package com.example.mainactivity;
 
-import android.app.ActivityOptions;
-import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.Toast;
+import android.view.MenuItem;
 
-import androidx.annotation.RequiresApi;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
-@RequiresApi(api = Build.VERSION_CODES.M) //necessary for makeBasic???
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+
 public class MainActivity extends AppCompatActivity {
 
-    boolean matches = false;
-    ActivityOptions options = ActivityOptions.makeBasic();
-    private TextView randomPassword;
-    private EditText editPassword;
-    private TextView numFailedAttempts;
-    private String _password;
-    private int counter = 0;
+    private BottomNavigationView.OnNavigationItemSelectedListener navListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
+        @Override
+        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            Fragment selectedFragment = new FragmentHome();
+            switch (item.getItemId()) {
+                case R.id.navMain:
+                    selectedFragment = new FragmentHome();
+                    break;
+                case R.id.navAddDrinks:
+                    selectedFragment = new FragmentAddDrink();
+                    break;
+                case R.id.navLog:
+                    selectedFragment = new FragmentLog();
+                    break;
+            }
+
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, selectedFragment).commit();
+            return true;
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        BottomNavigationView bottomNav = findViewById(R.id.bottomNav);
+        bottomNav.setOnNavigationItemSelectedListener(navListener);
 
-        //Setting buttons and text boxes on the screen
-        randomPassword = findViewById(R.id.tvRandomPassword);
-        editPassword = findViewById(R.id.etPassword);
-        numFailedAttempts = findViewById(R.id.tvFailedAttempts);
-        Button login = findViewById(R.id.buttonLogin);
-        Button addDrink = findViewById(R.id.buttonDrinksAdder);
-
-        //Generation random password for the checker and setting it
-        Passwords passwordsList = new Passwords();
-        randomPassword.setText(passwordsList.randomPassword());
-        numFailedAttempts.setText(getString(R.string.numAttempts, counter));
-
-        //Setting up listener for the login button
-        login.setOnClickListener(view -> {
-            _password = randomPassword.getText().toString();
-            String inputPassword = editPassword.getText().toString();
-
-            //If nothing is input
-            if (inputPassword.isEmpty()) {
-                Toast.makeText(MainActivity.this, "u didn't type anything??", Toast.LENGTH_SHORT).show();
-            }
-
-            //If there is any input, check if it is matching
-            else {
-                matches = checkPassword(inputPassword, _password);
-
-                //If it does not match, notify user and increase counter
-                if (!matches) {
-                    counter++;
-                    Toast.makeText(MainActivity.this, "u typed it wrong", Toast.LENGTH_SHORT).show();
-                    numFailedAttempts.setText(getString(R.string.numAttempts, counter));
-                }
-                //If it does match, send user to home page
-                else {
-                    Toast.makeText(MainActivity.this, "ur not drunk ;)", Toast.LENGTH_SHORT).show();
-
-                    Intent intent = new Intent(MainActivity.this, HomePageActivity.class);
-                    startActivity(intent);
-                }
-
-            }
-
-        });
-
-        //Setting up listener for add drinks button. Send user to drink adder page without needing password verification
-        addDrink.setOnClickListener(view -> {
-            Intent intent = new Intent(MainActivity.this, DrinkAdderActivity.class);
-            startActivity(intent);
-        });
-
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new FragmentHome()).commit();
 
     }
 
-    /**
-     * Method that checks if password entered matches text from randomPassword
-     */
-    private boolean checkPassword(String inputPassword, String pass) {
-        return inputPassword.equals(pass);
-    }
+
+
 }

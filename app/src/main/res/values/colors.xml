@@ -6,4 +6,5 @@
     <color name="backgroundColor">#FFE3B6EF</color>
     <color name="buttonTextColor">#FFA604FF</color>
     <color name="buttonBackground">#FF7BD7F4</color>
+    <color name="defaultBlueText">#0030E1</color>
 </resources>

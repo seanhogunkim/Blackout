@@ -4,4 +4,15 @@
     <string name="add_drinks">ADD DRINKS</string>
     <string name="numAttempts">Number of attempts: %1d"</string>
     <string name="etPasswordHint">Type here :)</string>
+    <string name="cbBlackout">blackout mode</string>
+    <string name="not_lock_whitelisted">This app has not been given Device Owner privileges to manage this device and start lock task mode</string>
+    <string name="title_activity_locked">LockedActivity</string>
+    <string name="startBlackout">Enter blackout mode</string>
+    <string name="notDrunk">ur not drunk ;)</string>
+    <string name="visitNumber">This is visit number: %1d</string>
+    <string name="leaveComment">Leave a comment?</string>
+    <string name="viewPrevComments">View previous comments</string>
+    <string name="save">SAVE</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

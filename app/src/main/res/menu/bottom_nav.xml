@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/navMain"
+        android:icon="@drawable/ic_baseline_house_24"
+        android:title="Main" />
+
+    <item
+        android:id="@+id/navAddDrinks"
+        android:icon="@drawable/ic_baseline_local_bar_24"
+        android:title="Add Drink" />
+
+    <item
+        android:id="@+id/navLog"
+        android:icon="@drawable/ic_baseline_menu_book_24"
+        android:title="Log" />
+
+</menu>
