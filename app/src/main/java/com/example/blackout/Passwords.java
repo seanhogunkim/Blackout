@@ -1,5 +1,8 @@
-package com.example.mainactivity;
+package com.example.blackout;
 
+/**
+ * Array where I store password values
+ */
 public class Passwords {
     final String[] passwords = new String[7];
 

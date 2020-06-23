@@ -1,7 +1,5 @@
-package com.example.mainactivity;
+package com.example.blackout;
 
-import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,7 +11,7 @@ import androidx.fragment.app.Fragment;
 
 public class FragmentHome extends Fragment {
 
-    Activity context;
+    FragmentBlackout blackoutFrag = new FragmentBlackout();
 
 
     @Nullable
@@ -23,10 +21,10 @@ public class FragmentHome extends Fragment {
 
         View rootView = inflater.inflate(R.layout.fragment_home, container, false);
 
-        Button blackoutButton = (Button) rootView.findViewById(R.id.buttonStartBlackout);
+        Button blackoutButton = rootView.findViewById(R.id.buttonStartBlackout);
         blackoutButton.setOnClickListener(view -> {
-            Intent intent = new Intent(getActivity(), BlackoutActivity.class);
-            startActivity(intent);
+//            FragmentBlackout blackoutFrag = new FragmentBlackout();
+            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, blackoutFrag).addToBackStack(null).commit();
 
         });
         return rootView;

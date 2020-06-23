@@ -1,4 +1,4 @@
-package com.example.mainactivity;
+package com.example.blackout;
 
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -11,23 +11,26 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
 
+    FragmentHome homeFrag = new FragmentHome();
+    FragmentAddDrink addDrinkFrag = new FragmentAddDrink();
+    FragmentLog logFrag = new FragmentLog();
+
     private BottomNavigationView.OnNavigationItemSelectedListener navListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            Fragment selectedFragment = new FragmentHome();
+            Fragment selectedFragment = homeFrag;
             switch (item.getItemId()) {
                 case R.id.navMain:
                     selectedFragment = new FragmentHome();
                     break;
                 case R.id.navAddDrinks:
-                    selectedFragment = new FragmentAddDrink();
+                    selectedFragment = addDrinkFrag;
                     break;
                 case R.id.navLog:
-                    selectedFragment = new FragmentLog();
+                    selectedFragment = logFrag;
                     break;
             }
-
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, selectedFragment).commit();
+            openFragment(selectedFragment);
             return true;
         }
     };
@@ -37,13 +40,17 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //Initialising and setting bottomNav bar. Start app by opening the home Fragment
         BottomNavigationView bottomNav = findViewById(R.id.bottomNav);
         bottomNav.setOnNavigationItemSelectedListener(navListener);
 
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new FragmentHome()).commit();
+        openFragment(new FragmentHome());
 
     }
 
+    public void openFragment(Fragment selectedFragment) {
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, selectedFragment).commit();
+    }
 
 
 }

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.mainactivity">
+    package="com.example.blackout">
 
     <application
         android:allowBackup="true"
@@ -10,10 +10,7 @@
         android:supportsRtl="true"
         android:testOnly="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".BlackoutActivity" />
-        <activity android:name=".DrinkAdderActivity" />
-        <activity android:name=".HomeActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name="com.example.blackout.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
