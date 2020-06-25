@@ -3,12 +3,12 @@ package com.example.blackout;
 public class Drink {
 
 
-    private final String _name;
-    private final int _alcPercent;
-    private final int _alcVolume;
+    private String _name;
+    private String _alcPercent;
+    private String _alcVolume;
     private int _imageResource;
 
-    public Drink(String name, int alcPercent, int volume, int imageResource) {
+    public Drink(String name, String alcPercent, String volume, int imageResource) {
         _name = name;
         _alcPercent = alcPercent;
         _imageResource = imageResource;
@@ -17,14 +17,14 @@ public class Drink {
     }
 
 
-    public Drink(String name, int alcPercent, int volume) {
+    public Drink(String name, String alcPercent, String volume) {
         _name = name;
         _alcPercent = alcPercent;
         _imageResource = R.drawable.ic_baseline_local_bar_24;
         _alcVolume = volume;
     }
 
-    public int get_alcVolume() {
+    public String get_alcVolume() {
         return _alcVolume;
     }
 
@@ -32,7 +32,7 @@ public class Drink {
         return _name;
     }
 
-    public int get_alcPercent() {
+    public String get_alcPercent() {
         return _alcPercent;
     }
 

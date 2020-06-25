@@ -1,11 +1,13 @@
 package com.example.blackout;
 
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -17,11 +19,13 @@ import java.util.ArrayList;
 
 /**
  * Fragment for add drink function
+ * Add drink page allows you to add a drink with parameters name, alcohol percentage and volume
  * <p>
  * Author: Sean Hogun Kim
  */
 public class FragmentAddDrink extends Fragment {
 
+    //Setting up the recycler view for added drink entries
     private RecyclerView _recyclerView;
     private RecyclerView.Adapter _adapter;
     private RecyclerView.LayoutManager _layoutManager;
@@ -51,9 +55,16 @@ public class FragmentAddDrink extends Fragment {
         //Setting up listeners
         buttonAddDrink.setOnClickListener(view -> {
             String drinkNameString = drinkName.getText().toString();
-            int alcPercentInt = Integer.parseInt(alcPercent.getText().toString());
-            int alcVolInt = Integer.parseInt(alcVol.getText().toString());
-            insertItem(drinkNameString, alcPercentInt, alcVolInt);
+            String alcPercentString = alcPercent.getText().toString();
+            String alcVolString = alcVol.getText().toString();
+            if (TextUtils.isEmpty(drinkNameString) || TextUtils.isEmpty(alcPercentString) || TextUtils.isEmpty(alcVolString)) {
+                Toast.makeText(getActivity(), "please fill in all the blanks", Toast.LENGTH_SHORT).show();
+            } else if (Integer.parseInt(alcPercentString) >= 100) {
+                Toast.makeText(getActivity(), "wow where did u find more than 100% alcohol?", Toast.LENGTH_SHORT).show();
+            } else {
+                insertItem(drinkNameString, alcPercentString, alcVolString);
+            }
+
 
         });
 
@@ -61,7 +72,8 @@ public class FragmentAddDrink extends Fragment {
         return rootView;
     }
 
-    public void insertItem(String name, int alcPercent, int alcVol) {
+    //Whenever we create a new drink we add it to the top of the list
+    public void insertItem(String name, String alcPercent, String alcVol) {
         drinksList.add(0, new Drink(name, alcPercent, alcVol));
         System.out.println("adding item to list");
         _adapter.notifyItemInserted(0);
@@ -72,10 +84,12 @@ public class FragmentAddDrink extends Fragment {
 
     }
 
+    //Initialisation of the list of drinks
     public void createDrinkList() {
         drinksList = new ArrayList<>();
     }
 
+    //Create the recycler view and adapter
     public void buildRecyclerView(View rootView) {
         _recyclerView = rootView.findViewById(R.id.recyclerViewAddDrink);
         _recyclerView.setHasFixedSize(true);
