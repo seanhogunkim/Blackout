@@ -14,6 +14,8 @@ import androidx.fragment.app.Fragment;
 
 /**
  * Fragment for blackout
+ * <p>
+ * Author: Sean Hogun Kim
  */
 
 public class FragmentBlackout extends Fragment {
@@ -35,7 +37,7 @@ public class FragmentBlackout extends Fragment {
         EditText editPassword = rootView.findViewById(R.id.etPassword);
         TextView numFailedAttempts = rootView.findViewById(R.id.tvFailedAttempts);
         Button login = rootView.findViewById(R.id.buttonLogin);
-        Button addDrink = rootView.findViewById(R.id.buttonDrinksAdder);
+        Button addDrink = rootView.findViewById(R.id.buttonGoToAddDrinksPage);
         CheckBox blackout = rootView.findViewById(R.id.checkBox);
         Passwords passwordsList = new Passwords();
         //Generation random password for the checker and setting it

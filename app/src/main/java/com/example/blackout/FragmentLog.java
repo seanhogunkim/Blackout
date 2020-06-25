@@ -9,6 +9,8 @@ import androidx.fragment.app.Fragment;
 
 /**
  * Fragment for the log page
+ * <p>
+ * Author: Sean Hogun Kim
  */
 public class FragmentLog extends Fragment {
 

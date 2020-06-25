@@ -9,6 +9,11 @@ import androidx.fragment.app.Fragment;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+/**
+ * Main activity of the app
+ * <p>
+ * Author: Sean Hogun Kim
+ */
 public class MainActivity extends AppCompatActivity {
 
     FragmentHome homeFrag = new FragmentHome();

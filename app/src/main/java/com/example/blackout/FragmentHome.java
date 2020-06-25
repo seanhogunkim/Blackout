@@ -9,6 +9,10 @@ import android.widget.Button;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+/**
+ * Fragment for the home page
+ * Author: Sean Hogun Kim
+ */
 public class FragmentHome extends Fragment {
 
     FragmentBlackout blackoutFrag = new FragmentBlackout();

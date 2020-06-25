@@ -1,21 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".FragmentAddDrink">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewAddDrink"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginBottom="160dp"
+        android:padding="4dp"
         android:background="@color/backgroundColor"
-        android:text="@string/hello_blank_fragment" />
+        android:scrollbars="vertical" />
 
-    <TextView
-        android:id="@+id/textView"
+    <EditText
+        android:id="@+id/etDrinkName"
+        android:layout_width="383dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/etAlcPercent"
+        android:layout_marginStart="15dp"
+        android:layout_marginBottom="2dp"
+
+        android:hint="Enter drink name" />
+
+    <EditText
+        android:id="@+id/etAlcPercent"
+        android:layout_width="113dp"
+        android:layout_height="wrap_content"
+
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="15dp"
+        android:layout_marginBottom="60dp"
+        android:hint="Alcohol %"
+        android:inputType="number" />
+
+    <EditText
+        android:id="@+id/etAlcVolume"
+        android:layout_width="131dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/etAlcPercent"
+        android:layout_marginStart="15dp"
+        android:layout_toEndOf="@id/etAlcPercent"
+        android:hint="Volume (mL)"
+        android:inputType="number" />
+
+    <Button
+        android:id="@+id/buttonAddDrink"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="this is add drink page" />
+        android:layout_alignBottom="@id/etAlcPercent"
+        android:layout_marginStart="15dp"
+        android:layout_toEndOf="@id/etAlcVolume"
+        android:text="Add drink" />
 
-</FrameLayout>
+    <!-- the 60dp left on the bottom is for the navbar-->
+
+</RelativeLayout>
